@@ -1,4 +1,4 @@
-# Prequisite knowledge
+# Databases
 
 ## SQL
 
@@ -127,15 +127,15 @@ Media failure is usually quite rare when compared to the other two types of fail
 
 <br/>
 
-# Most popular databases
+## Most popular databases
 
-## SQL
+**SQL**
 
 - MySQL
 - PostgreSQL
 - MariaDB
 
-## NoSQL
+**NoSQL**
 
 - MongoDB
 - Cassandra
@@ -178,3 +178,36 @@ Some exmaples of apps that generally use relationships:
 - LinkedIn
 
 [A good reference for more details](https://www.dataversity.net/choose-right-nosql-database-application/)
+
+## Cons of SQL
+
+SQL databases have one major limitation: scaling. In order to scale a relational database, you have to shard and replicate to make them run smooth in a cluster, which could require careful planning and a good amount of resources.
+
+## Use case for NoSQL
+
+NoSQL databases are built to scale and can nodes to a cluster very quickly with few hiccups. Besides scale, NoSQL databases also require very little human intervention, which can reduce the manpower required to maintain and scale systems that need to serve millions quickly. There are very good reasons to choose a NoSQL database over a traditional SQL database:
+
+**Handling a large number of read and writes**
+
+NoSQL databases are built to handle a large number of read-write operations. This is because of the 'eventually consistent' model. They can handle big data with minimal latency, so choose NoSQL if you want to scale quickly at the cost of consistency.
+
+**Flexibility with data modeling**
+
+Since there are fewer limitations to building models in a NoSQL database, rapidly developing and changing models on the fly as the requirements of a model become solidified during the development process.
+
+**Data analytics**
+
+NoSQL databases are also a good fit for data analytics because of its ability to handle large numbers of reads and writes.
+
+## Cons of NoSQL
+
+In order to gain much of the scalabilty that NoSQL databases have, some features had to be sacrificed.
+Amongs these features, the most critical are consistency and no ACID support for transactions.
+
+**Inconsistency**
+
+Data in NoSQL databases are not normalized, which introduces the risk of being inconsistent. The idea is that 'eventually' data can be normalized over time, but not tackling this issue upfront can present itself as an issue to developer attempting to normalize data at a later time.
+
+**No ACID support for transactions**
+
+A few NoSQL databases claim to support this feature, though they don’t support them at a global deployment level. ACID transactions in these databases are limited to a certain entity hierarchy or a small deployment region where they can lock down nodes to update them.
