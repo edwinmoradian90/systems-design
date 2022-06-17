@@ -31,6 +31,28 @@ Each type of NoSQL database stores data differently and is selected and used in 
 
 <br/>
 
+## CAP
+
+CAP stands for consistency, availability, partition tolerance.
+
+- Consistency -- are all of my nodes always insync and accurate?
+- Availablity -- are all non-failing nodes avialable for querying?
+- Partition-tolerance -- will the cluster continue to work despite any number of communication breakdowns between nodes in the system?
+
+The CAP theorem states that in case of a network failure, when a few of the system nodes are down, we have to choose between availability and consistency.
+
+If you choose availability, then your other nodes will pick up the slack when the primary is down, sacrificing consistency.
+
+if you choose consistency, all other nodes must be locked down until the failing node is back online.
+
+if you choose
+
+<br/>
+
+---
+
+<br/>
+
 ## ACID
 
 ### **What is ACID?**
@@ -220,6 +242,12 @@ Data in NoSQL databases are not normalized, which introduces the risk of being i
 
 A few NoSQL databases claim to support this feature, though they don’t support them at a global deployment level. ACID transactions in these databases are limited to a certain entity hierarchy or a small deployment region where they can lock down nodes to update them.
 
+<br/>
+
+---
+
+<br/>
+
 ## When would use both?
 
 The idea of using several distinct persistence technologies such as PostgreSQL or MongoDB is known as 'polyglot persistence'. There are many reasons why a company would choose to do this.
@@ -235,6 +263,12 @@ Meta is very popular and so it makes sense for the company to run ads, so we're 
 Meta also has a recommendations feed to keep users engaged, for this feature it would likely be best to use a graph database.
 
 What about the search feature that allows users to search for other users, businesses, etc? In this case a document oriented store like Elasticsearch would work best.
+
+<br/>
+
+---
+
+<br/>
 
 ## Multimodel database
 
