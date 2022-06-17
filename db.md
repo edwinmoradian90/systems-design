@@ -164,4 +164,17 @@ Media failure is usually quite rare when compared to the other two types of fail
 1. Option to migrate to another database without significant change to existing application’s access paths or logic
 1. Data Warehouse, Analytics or BI use case
 
+## Use cases for SQL
+
+In general, if your application needs strong consistency, transactions, or relationships, go for SQL.
+Some examples of apps that need strong consistency include:
+
+- Stock trading
+- Banking
+
+Some exmaples of apps that generally use relationships:
+
+- Facebook (Meta)
+- LinkedIn
+
 [A good reference for more details](https://www.dataversity.net/choose-right-nosql-database-application/)
