@@ -12,6 +12,26 @@
 
   With data memoized in a queue, outages will not be as scary and many needless job failures can be avoided until the failed service is back online.
 
+# Queue models
+
+### **Publish-subscribe**
+
+The publish-subscribe model, or pub-sub, is a model that allows one or many producers to broadcase messages to multiple consumers.
+
+**Implementing a pub-sub model**
+
+Pub-subs utilize exchanges, like a telephone exchange that routes messages from the sender to the receiver through the infrastructure based on certain logic.
+
+There are different types of exchanges available in messgae queues, some of which are: direct, topic, headers, and fanout. Each has its own use case.
+
+The fanout exchange is what we use to implement a pub-sub pattern. It works by pushing the messages to the queue and the consumers will receive the message broadcast. The relationship between the exchange and the queue is known as binding.
+
+The pub-sub pattern is responsible for delivering real-time news, updates, notifications on social apps to users. When you follow a page, you will start receiving updates.
+
+### **Point-to-point model**
+
+In a point-to-point model, a message from the producer is consumed by only one consumer. While pub-sub is like a many-to-many relationship, point-to-point is like a one-to-one relationship.
+
 # Most popular queuing systems
 
 - Redis
