@@ -164,6 +164,10 @@ Media failure is usually quite rare when compared to the other two types of fail
 1. Option to migrate to another database without significant change to existing application’s access paths or logic
 1. Data Warehouse, Analytics or BI use case
 
+## Strong consistency
+
+In SQL, strong consistency refers to the idea that all server nodes MUST contain the exact same data. This can only be done by locking down the nodes as they are being updated. Locking nodes in this way prevents concurrent updates in all other nodes, so for a brief moment in time only one of the nodes is allowed to receive an update. This is terrible for social media platforms but great for services dealling with finances, where consistency needs to be air tight.
+
 ## Use cases for SQL
 
 In general, if your application needs strong consistency, transactions, or relationships, go for SQL.
@@ -178,6 +182,10 @@ Some exmaples of apps that generally use relationships:
 - LinkedIn
 
 [A good reference for more details](https://www.dataversity.net/choose-right-nosql-database-application/)
+
+## Eventual consistency
+
+Unlike SQL databases, NoSQL databases do not have a strict policy about consistency. This is designed with scale in mind. Where a SQL will pause all concurrency updates, NoSQL actively encourages this behavior, allowing all nodes to concurrently update will new data. The idea is that over time all nodes should be consistency, and this behavior is acceptable because a little bit of inconsistency is a fair price to pay for rapid scalibility.
 
 ## Cons of SQL
 
@@ -211,3 +219,30 @@ Data in NoSQL databases are not normalized, which introduces the risk of being i
 **No ACID support for transactions**
 
 A few NoSQL databases claim to support this feature, though they don’t support them at a global deployment level. ACID transactions in these databases are limited to a certain entity hierarchy or a small deployment region where they can lock down nodes to update them.
+
+## When would use both?
+
+The idea of using several distinct persistence technologies such as PostgreSQL or MongoDB is known as 'polyglot persistence'. There are many reasons why a company would choose to do this.
+
+Let's take Meta, formerly Facebook, as an example. There are many complex relationships that exist among users of the platform. For this use case, a relational database would seem to fit the bill.
+
+For frequently accessed data, we would want to implement a cache, so a technology like Redis or Memcached would seem to work well for this use case.
+
+What about analytics? The users of Meta are generating massive amounts of data, for this use case we can use Cassandra or HBase.
+
+Meta is very popular and so it makes sense for the company to run ads, so we're not talking about a payment system, which needs strong consistency and ACID transactions -- relational database it is!
+
+Meta also has a recommendations feed to keep users engaged, for this feature it would likely be best to use a graph database.
+
+What about the search feature that allows users to search for other users, businesses, etc? In this case a document oriented store like Elasticsearch would work best.
+
+## Multimodel database
+
+Mulitmodel databases support many types of models, including many of the ones mentioned eariler. This allows us to leverage different data models from a single api.
+
+**Popular multimodel databases**
+
+- ArangoDB
+- CosmosDB
+- OrientDB
+- Couchbase
