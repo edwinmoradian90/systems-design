@@ -36,7 +36,7 @@ Each type of NoSQL database stores data differently and is selected and used in 
 CAP stands for consistency, availability, partition tolerance.
 
 - Consistency -- are all of my nodes always insync and accurate?
-- Availablity -- are all non-failing nodes avialable for querying?
+- Availablity -- are all non-failing nodes available for querying?
 - Partition-tolerance -- will the cluster continue to work despite any number of communication breakdowns between nodes in the system?
 
 The CAP theorem states that in case of a network failure, when a few of the system nodes are down, we have to choose between availability and consistency.
@@ -280,3 +280,137 @@ Mulitmodel databases support many types of models, including many of the ones me
 - CosmosDB
 - OrientDB
 - Couchbase
+
+<br/>
+
+---
+
+<br/>
+
+## Types of databases
+
+### **Document-oriented database**
+
+Leading type of document-oriented databases are NoSQL.They store data in a document-oriented model in independent documents. The data is generally semi-structured and stored in a JSON-like format. This type of database is easier for developers to use because of the similiarity to the data model of the application code. Document-oriented databases work very well with agile software development methodologies.
+
+**Most popular**
+
+- MongoDB
+- CouchDB
+- OrientDB
+- Google cloud datastore
+- Amazon DocumentDB
+
+---
+
+**When to choose document-oriented data (NoSQL)**
+
+1.  While working with semi-structured data and need a flexible schema that will change often
+1.  Aren’t sure about the database schema when you start writing the app
+1.  Need to scale fast and stay highly available
+
+Typical use cases of document-oriented databases include:
+
+- Real-time feeds
+- Live sports apps
+- Writing product catalogues
+- Inventory management
+- Storing user comments
+- Web-based multiplayer games
+
+Being in the family of NoSQL databases, document-oriented databases provide horizontal scalability and performant read-writes because they cater to CRUD (Create Read Update Delete) use cases. These include scenarios where there isn’t much complex relational logic involved and all we need is quick persistence and data retrieval.
+
+---
+
+### **Graph database (NoSQL)**
+
+Graph databases are the SQL of the NoSQL world. They are built to store data as nodes/vertices and edges. When SQL is too slow or requires many complex queries, graph databases come in handy. Being part of the NoSQL family, they follow the same principles, so the end result is complex relationships without the latency.
+
+**Adjacency lists and the adjacency matrix**
+
+Graphs are represented primarily as an adjacency list or adjacency matrix. Adjacency Matrix ideally helps figure out queries like if a relationship between two nodes exists, in constant time O(1), though it is a bit space-intensive. If the nodes in a graph contain a lot of edges, we tend to represent it with the adjacency matrix. On the flip side, if the edges are sparse, we represent the graph using the adjacency list.
+
+**A note on speed**
+
+Graph databases are faster than regular SQL databases because how the data is persisted. A SQL database will join tables during the query, which can lead to slow performance for very complex queries. On the other hand, a graph database persists data as a graph with vertices and edges.
+
+**Real world use cases**
+
+One case is Google maps, where nodes represent cities and edges are the roads between these cities. The entire application is one big map that heavily uses graph theory to find the shortest distance between the two places. In graph theory, based on the use case, different algorithms are used to calculate the shortest path between two nodes. A few of the popular ones are Dijkstra’s algorithm, Bellman-Ford algorithm, A\* search algorithm, Floyd–Warshall algorithm, Johnson’s algorithm, and the Viterbi algorithm.
+
+Another case is Google's page rank algorithm, where the web pages are considered as nodes and the links between them are the edges. Moreover, there are weights attached to these edges, granting authority to the most relevant pages.
+
+---
+
+### **Key-value datastore (NoSQL)**
+
+These databases use a simple key-value pairing method to store and quickly fetch the data with minimum latency. Due to this minimum latency, these databases are primary used as caches. There are no query languages required to fetch from the database, making it very fast and simple to use.
+
+**Most popular**
+
+- Redis
+- Hazelcast
+- Riak
+- Voldemort
+- Memcached
+
+**When to choose key-value datastores**
+
+When you want to fetch data as really quickly. Key-value stores are built to serve use cases that require super-fast data fetch.
+
+**Use cases**
+
+- Caching
+- Persisting user state
+- Persisting user sessions
+- Managing real-time data
+- Implementing queues
+- Creating leaderboards in online games and web apps
+- Implementing a pub-sub system
+
+---
+
+### **Time-series database**
+
+Time-series databases are specialty databases that are optimized for tracking and persisting data that is continually read and written in the system over a period of time.
+
+**Why use a time-series database**
+
+Time-series databases are great for tracking the behavior of the system as a whole. It allows us to study user patterns, anamolies, and how things change over time. Time-series data is primarily used for running analytics and deducing conclusions. It helps the stakeholders make future business decisions by looking at the analytics results. Running analytics enables us to evolve our product continually. Regular databases are not built to handle time-series data.
+
+**Most popular**
+
+- Influx DB
+- Timescale DB
+- Prometheus
+
+**When to choose a time-series database**
+
+Choose a time-series database when you need to manage data in real-time, continually over a long period of time.
+
+Some examples:
+
+- Real-time cognitive fraud detection
+- Monitor vertical lining green walls and plant installations
+
+---
+
+### **Wide-column database (NoSQL)**
+
+Primary use of wide-column databases are for big data. Wide-column databases are perfect for analytical use cases. They have a high performance and a scalable architecture. Column-oriented databases, or wide-column databases, store data in a record with a dynamic number of columns. A record can hold billions of columns.
+
+**Most popular**
+
+- Cassandra
+- HBase
+- Google BigTable
+- ScyllaDB
+
+**When to choose a wide-column database**
+
+If you need to work with big data. Wide-column databases are built to manage big data, ensuring scalability, performance, and availability.
+
+Some examples:
+
+- Netflix uses Cassandra in the analytics infrastructure
+- Adobe and others use HBase for processing large amounts of data
